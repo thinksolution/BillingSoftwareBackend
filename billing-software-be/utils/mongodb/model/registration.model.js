@@ -39,7 +39,7 @@ const schema = new Schema({
     },
     registrationKey : {
         type: String,
-        required: false
+        required: true
     }
 },{timestamps: true});
 

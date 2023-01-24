@@ -27,9 +27,7 @@ const loginCompanyBL = async (req, res) => {
 
     try {
         const loginCompanyResult = await loginCompanyDAL(req.body)
-        console.log("loginCompanyResult", loginCompanyResult)
         res.locals.rootdata = loginCompanyResult;
-        console.log("res.locals.rootdata", res.locals.rootdata)
     } catch (error) {
         throw error;
     }

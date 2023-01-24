@@ -17,11 +17,11 @@ const registerCompany = async (data) => {
 
 const loginCompany = async (data) => {
     try {
-        const loginResult = await RegistrationModel.find({ "email": data.email });
-        if (loginResult.length != 0) {
-            const passwordMatch = await decryptText(data.password, loginResult[0].password);
-            console.log("passwordMatch", passwordMatch)
+        const loginStatus = await RegistrationModel.find({ "email": data.email });
+        if (loginStatus.length != 0) {
+            const passwordMatch = await decryptText(data.password, loginStatus[0].password);
             if (passwordMatch) {
+                let loginResult = loginStatus[0].registrationKey
                 return loginResult;
             } else {
                 return { "error": "User not Exist" };
