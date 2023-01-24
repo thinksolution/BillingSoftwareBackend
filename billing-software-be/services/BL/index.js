@@ -7,12 +7,12 @@ const registerCompanyBL = async(req, res) => {
 
     try {
         let data = req.body
-        console.log("data1", data.registrationKey)
         // if(data.registrationKey = undefined) {
-        //     data.registrationKey = "Free";
-        //     console.log("registrationKey", data.registrationKey)
-        // } else {
-        //     data.registrationKey = await encryptText(data.registrationKey)
+        //     data.registrationKey = 'Free'
+        //     return data.registrationKey
+        // } 
+        // else {
+        //     data.registrationKey = data.registrationKey
         // }
         data.password = await encryptText(data.password)
         console.log("data", data)

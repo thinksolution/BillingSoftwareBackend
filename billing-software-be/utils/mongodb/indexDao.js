@@ -9,7 +9,7 @@ const registerCompany = async (data) => {
             return companyData.save();
         } else {
             console.log("fired")
-            return { "exist": "Company already Register in our Application" }
+            return { "exist": "User already exist" };
         }
     } catch (error) {
         throw error;
