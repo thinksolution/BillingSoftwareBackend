@@ -4,8 +4,10 @@ const successResponseGenrator = require('../utils/helper/sucessResponse');
 
 const {
     registerCompanyController,
+    loginCompanyController,
 } = require('../controller/index')
 
-router.post('/REGISTER', registerCompanyController, successResponseGenrator)
+router.post('/register', registerCompanyController, successResponseGenrator)
+router.post('/login', loginCompanyController, successResponseGenrator)
 
 module.exports = router;
