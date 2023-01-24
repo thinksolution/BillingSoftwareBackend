@@ -1,9 +1,10 @@
-const {encryptText} = require('../../utils/helper/bcrypt.decrypt')
+const { encryptText } = require('../../utils/helper/bcrypt.decrypt')
 const {
-    registerCompanyDAL
+    registerCompanyDAL,
+    loginCompanyDAL
 } = require('../DAL/index')
 
-const registerCompanyBL = async(req, res) => {
+const registerCompanyBL = async (req, res) => {
 
     try {
         let data = req.body
@@ -12,10 +13,9 @@ const registerCompanyBL = async(req, res) => {
         //     return data.registrationKey
         // } 
         // else {
-        //     data.registrationKey = data.registrationKey
+        //     data.registrationKey = await encryptText(data.registrationKey)
         // }
         data.password = await encryptText(data.password)
-        console.log("data", data)
         let saveCompany = await registerCompanyDAL(data);
         res.locals.rootdata = saveCompany;
     } catch (error) {
@@ -23,6 +23,19 @@ const registerCompanyBL = async(req, res) => {
     }
 }
 
+const loginCompanyBL = async (req, res) => {
+
+    try {
+        const loginCompanyResult = await loginCompanyDAL(req.body)
+        console.log("loginCompanyResult", loginCompanyResult)
+        res.locals.rootdata = loginCompanyResult;
+        console.log("res.locals.rootdata", res.locals.rootdata)
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
     registerCompanyBL,
+    loginCompanyBL,
 }

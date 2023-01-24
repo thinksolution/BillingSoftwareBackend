@@ -17,14 +17,11 @@ const encryptText = async (text) => {
     })
     await promise.then((hash) => {
         encrypted = hash
-        console.log("encrypted", encrypted)
     })
     return encrypted
 }
 
 const decryptText = async (text, hash) => {
-    console.log("Text",text);
-    console.log("Hashing",hash)
     let decrypted;
     let promise = new Promise((resolve, reject) => {
         bcrypt.compare(text, hash, (err, result) => {
